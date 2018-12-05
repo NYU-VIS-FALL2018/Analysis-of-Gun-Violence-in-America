@@ -1,7 +1,7 @@
-# Project Name
-**Authors**: Jhon Doe (jd2545), Mark Smith (ms4568)
+# Analysis of Gun Violence in America
+**Authors**: Shradha Ahuja (sa4741), Rohit Garla (rg3365), Sneha Munden (sm7352)
 
-Group X (Online: Group Y) 
+Group 10 (Online: Group Y) 
 
 ![Screenhot](screenshot.jpg)
 
