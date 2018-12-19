@@ -1,61 +1,464 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-  <title>Bar chart with D3.js</title>
-  
-<link href="style.css" rel="stylesheet">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="favicon.ico">
+		<title>Gun Violence in America</title>
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<!-- Custom styles for this template -->
+		<link href="css/owl.carousel.css" rel="stylesheet">
+		<link href="css/owl.theme.default.min.css"  rel="stylesheet">
+		<link href="css/animate.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/graph_style.css" rel="stylesheet">
   <script src="https://d3js.org/d3.v3.min.js"></script>
-  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-  <script type="text/javascript">
-function getData(title)
-{
-    switch(title)
-    {
-        case "1":
-            var s = document.createElement("script");
-                s.type = "text/javascript";
-                s.src = "graph1.js";
-                s.innerHTML = null;
-                s.id = "widget";
-                var list = document.getElementById("output"); 
-                // if (typeof(list) != 'undefined' && list != null)
-                // {
-                //   list.removeChild(list.childNode[0]);
-                // }
-                list.innerHTML = "<h3>People affected by Gun violence over the years</h3>";
-                list.appendChild(s);
-        break;
-        case "2":
-            var s = document.createElement("script");
-                s.type = "text/javascript";
-                s.src = "graph2.js";
-                s.innerHTML = null;
-                s.id = "widget";
-                var list = document.getElementById("output"); 
-                // var newList = document.createElement("output");
-                list.innerHTML = "<h3>Number of incidents for each incident type</h3>";
-                list.appendChild(s);
-        break;
-        default:
-        void(0);
-    }
-}
-</script>
-</head>
-<body>
-  <div id='layout'>
-    <!-- <h2>Bar chart example</h2> -->
-    <select onChange="getData(this.value);">
-    <option value="">Select</option>
-    <option value="1">Graph 1</option>
-    <option value="2">Graph 2</option>
-</select>
-<div id="output">
-    <script id="widget" type="text/javascript"></script>
-</div>
-  </div>
-  <!-- <script src="script4.js"></script> -->
-</body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+  <script src="js/datamaps.usa.js"></script> 
+  <script src="js/d3pie.min.js"></script>
+	
+  <!-- <script src="script.js"></script> -->
+
+
+	</head>
+	<body id="page-top">
+		<!-- Navigation -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+					<h1><center>Gun Violence in America</center></h1>
+			</div>
+		</nav><br><br><br><br><br><br><br><br>
+							<img src="images/gunViolence.png"/>
+ 
+		<section id="about" class="light-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<div class="section-title">
+							<h2>Background</h2>
+							<p><strong>When the world looks at the United States, it sees a land of exceptions: a time-tested if noisy democracy, a crusader in foreign policy, an exporter of beloved music and film. But there is one quirk that consistently puzzles America's fans and critics alike. Why, they ask, does it experience so many mass shootings? Perhaps, some speculate, it is because American society is unusually violent. Or its racial divisions have frayed the bonds of society. Or its citizens lack proper mental care under a health care system that draws frequent derision abroad.These explanations share one thing in common: Though seemingly sensible, all have been debunked by research on shootings elsewhere in the world. Instead, an ever-growing body of research consistently reaches the same conclusion. The only variable that can explain the high rate of mass shootings in America is its astronomical number of guns.  And the mass shootings are getting deadlier, not more frequent.</strong></p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<div class="section-title">
+							<h3>America's unique gun violence problem</h3>
+						<p>The US is unique in two key- and related - ways when it comes to guns: It has way more gun deaths than other developed nations, and it has far higher levels of gun ownership than any other country in the world.</p>
+						</div>
+
+						<center>
+							<div class="graph1">
+								  <script src="js/graphs/graph1.js"></script>
+							</div>
+						</center>
+						</div>
+						<p>
+						The US also has by far the highest number of privately owned guns in the world. Estimated for 2017, the number of civilian-owned firearms in the US was 120.5 guns per 100 residents, meaning there were more firearms than people. The world's second-ranked country was Yemen, a quasi-failed state torn by civil war, where there were 52.8 guns per 100 residents, according to an analysis from the Small Arms Survey.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<div class="section-title">
+							<h3>What types of guns kill Americans?</h3>
+						</div>
+
+						<center>
+							<div id="graph2">
+								  <script src="js/graphs/graph2.js"></script>
+							</div>
+						</center>
+						</div>
+						<p>
+						Military-style assault-style weapons have been blamed for some of the major mass shootings such as the attack in an Orlando nightclub and at the Sandy Hook School in Connecticut.
+						Dozens of rifles were recovered from the scene of the Las Vegas shooting, Police reported.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<div class="section-title">
+							<h3>Attacks in US become deadlier</h3>
+						</div>
+
+						<center>
+							<div id="graph3" style="position: relative; width: 500px; height: 800px">
+								  <script src="js/graphs/graph3.js"></script>
+							</div>
+						</center>
+						</div>
+						<p>
+						Every day, 96 Americans are killed with guns and hundreds more are shot and injured. The effects of gun violence extend far beyond these casualties-gun violence shapes the lives of millions of Americans who witness it, know someone who was shot, or live in fear of the next shooting.  The news stories and statements by political leaders write themselves, with only the location, name of the shooter and number of casualties changing. It all seems so routine.
+
+						But this perception isn't because of some unprecedented rise in the rate of mass public shootings-far from it. They're roughly as common now as they were in the 1980s and '90s. And the data offer a stark finding: Over the past decade, mass public shootings haven't become particularly more prevalent, they've simply become deadlier.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<div class="section-title">
+							<h3>Worst mass shooting in US till date</h3>
+						</div>
+
+						<center>
+							<div class="graph4" style="position: relative; width: 500px; height: 800px">
+								  <script src="js/graphs/graph4.js"></script>
+							</div>
+						</center>
+						</div>
+						<p>
+						A mass public shooting, as defined in one of the research, is any incident in which four or more victims are killed with a firearm within a 24-hour period at a public location in the absence of other criminal activity (robberies, drug deals, gang "turf wars"), military conflict or collective violence. For instance, last year's mass murder at the Pulse nightclub in Orlando would qualify, but the 1890 massacre at Wounded Knee would not, nor would a familicide in a private home, nor a shootout between rival gangs.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<div class="section-title">
+							<h3>A closer look at Gun Violence Attacks in America</h3>
+						</div>
+						</div>
+					</div>
+				</div>
+
+				
+				
+			</div>
+			<!-- /.container -->
+		</section>
+
+	
+
+		<section id="portfolio" class="light-bg">
+			<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="section-title">
+						<h2>Portfolio</h2>
+						<p>Our portfolio is the best way to show our work, you can see here a big range of our work. Check them all and you will find what you are looking for.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row row-0-gutter">
+				<!-- start portfolio item -->
+				<div class="col-md-4 col-0-gutter">
+					<div class="ot-portfolio-item">
+						<figure class="effect-bubba">
+							<img src="images/demo/portfolio-1.jpg" alt="img02" class="img-responsive" />
+							<figcaption>
+								<h2>Dean & Letter</h2>
+								<p>Branding, Design</p>
+								<a href="#" data-toggle="modal" data-target="#Modal-1">View more</a>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+				<!-- end portfolio item -->
+				<!-- start portfolio item -->
+				<div class="col-md-4 col-0-gutter">
+					<div class="ot-portfolio-item">
+						<figure class="effect-bubba">
+							<img src="images/demo/portfolio-2.jpg" alt="img02" class="img-responsive" />
+							<figcaption>
+								<h2>Startup Framework</h2>
+								<p>Branding, Web Design</p>
+								<a href="#" data-toggle="modal" data-target="#Modal-2">View more</a>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+				<!-- end portfolio item -->
+				<!-- start portfolio item -->
+				<div class="col-md-4 col-0-gutter">
+					<div class="ot-portfolio-item">
+						<figure class="effect-bubba">
+							<img src="images/demo/portfolio-3.jpg" alt="img02" class="img-responsive" />
+							<figcaption>
+								<h2>Lamp & Velvet</h2>
+								<p>Branding, Web Design</p>
+								<a href="#" data-toggle="modal" data-target="#Modal-3">View more</a>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+				<!-- end portfolio item -->
+			</div>
+			<div class="row row-0-gutter">
+				<!-- start portfolio item -->
+				<div class="col-md-4 col-0-gutter">
+					<div class="ot-portfolio-item">
+						<figure class="effect-bubba">
+							<img src="images/demo/portfolio-4.jpg" alt="img02" class="img-responsive" />
+							<figcaption>
+								<h2>Smart Name</h2>
+								<p>Branding, Design</p>
+								<a href="#" data-toggle="modal" data-target="#Modal-4">View more</a>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+				<!-- end portfolio item -->
+				<!-- start portfolio item -->
+				<div class="col-md-4 col-0-gutter">
+					<div class="ot-portfolio-item">
+						<figure class="effect-bubba">
+							<img src="images/demo/portfolio-5.jpg" alt="img02" class="img-responsive" />
+							<figcaption>
+								<h2>Fast People</h2>
+								<p>Branding, Web Design</p>
+								<a href="#" data-toggle="modal" data-target="#Modal-5">View more</a>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+				<!-- end portfolio item -->
+				<!-- start portfolio item -->
+				<div class="col-md-4 col-0-gutter">
+					<div class="ot-portfolio-item">
+						<figure class="effect-bubba">
+							<img src="images/demo/portfolio-6.jpg" alt="img02" class="img-responsive" />
+							<figcaption>
+								<h2>Kites & Stars</h2>
+								<p>Branding, Web Design</p>
+								<a href="#" data-toggle="modal" data-target="#Modal-6">View more</a>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+				<!-- end portfolio item -->
+			</div>
+
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<div class="section-title">
+							<h3>Is there a solution?</h3>
+						</div>
+						</div>
+						<p>
+						Stronger gun laws could help address the problem. A 2016 review of 130 studies in 10 countries, published in Epidemiologic Reviews, found that new legal restrictions on owning and purchasing guns tended to be followed by a drop in gun violence - a strong indicator that restricting access to guns can save lives. A review of the US evidence by RAND also linked some gun control measures, including background checks, to reduced injuries and deaths.
+But America maintains some of the weakest gun laws in the developed world, effectively allowing civilians to own firearms at much greater levels than anywhere else. Until the US confronts that issue, it will continue seeing more gun deaths than the rest of the developed world.</p>
+						</div>
+					</div>
+				</div>
+			</div><!-- end container -->
+		</section>
+
+		<section id="team" class="light-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<div class="section-title">
+							<h2>Our Team</h2>
+							<p>A creative agency based on Candy Land, ready to boost your business with some beautifull templates. MOOZ Agency is one of the best in town see more you will be amazed.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<!-- team member item -->
+					<div class="col-md-4">
+						<div class="team-item">
+							<div class="team-image">
+								<img src="images/demo/author-2.jpg" class="img-responsive" alt="author">
+							</div>
+							<div class="team-text">
+								<h3>SHRADHA AHUJA</h3>
+								<div class="team-position">CEO & Web Design</div>
+								<p>Mida sit una namet, cons uectetur adipiscing adon elit. Aliquam vitae barasa droma.</p>
+								<div class="team-socials">
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-youtube"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- end team member item -->
+					<!-- team member item -->
+					<div class="col-md-4">
+						<div class="team-item">
+							<div class="team-image">
+								<img src="images/demo/author-6.jpg" class="img-responsive" alt="author">
+							</div>
+							<div class="team-text">
+								<h3>ROHIT GARLA</h3>
+								<div class="team-position">Photography</div>
+								<p>Worsa dona namet, cons uectetur dipiscing adon elit. Aliquam vitae fringilla unda mir.</p>
+								<div class="team-socials">
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-youtube"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- end team member item -->
+					<!-- team member item -->
+					<div class="col-md-4">
+						<div class="team-item">
+							<div class="team-image">
+								<img src="images/demo/author-4.jpg" class="img-responsive" alt="author">
+							</div>
+							<div class="team-text">
+								<h3>SNEHA MUNDEN</h3>
+								<div class="team-position">Marketing</div>
+								<p>Dolor sit don namet, cons uectetur beriscing adon elit. Aliquam vitae fringilla unda.</p>
+								<div class="team-socials">
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-youtube"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- end team member item -->
+				</div>
+			</div>
+		</section>
+		<p id="back-top">
+			<a href="#top"><i class="fa fa-angle-up"></i></a>
+		</p>
+
+		<!-- Modal for portfolio item 1 -->
+		<div class="modal fade" id="Modal-1" tabindex="-1" role="dialog" aria-labelledby="Modal-label-1">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="Modal-label-1">Dean & Letter</h4>
+					</div>
+					<div class="modal-body">
+						<img src="images/demo/portfolio-1.jpg" alt="img01" class="img-responsive" />
+						<div class="modal-works"><span>Branding</span><span>Web Design</span></div>
+						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal for portfolio item 2 -->
+		<div class="modal fade" id="Modal-2" tabindex="-1" role="dialog" aria-labelledby="Modal-label-2">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="Modal-label-2">Startup Framework</h4>
+					</div>
+					<div class="modal-body">
+						<img src="images/demo/portfolio-2.jpg" alt="img01" class="img-responsive" />
+						<div class="modal-works"><span>Branding</span><span>Web Design</span></div>
+						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal for portfolio item 3 -->
+		<div class="modal fade" id="Modal-3" tabindex="-1" role="dialog" aria-labelledby="Modal-label-3">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="Modal-label-3">Lamp & Velvet</h4>
+					</div>
+					<div class="modal-body">
+						<img src="images/demo/portfolio-3.jpg" alt="img01" class="img-responsive" />
+						<div class="modal-works"><span>Branding</span><span>Web Design</span></div>
+						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal for portfolio item 4 -->
+		<div class="modal fade" id="Modal-4" tabindex="-1" role="dialog" aria-labelledby="Modal-label-4">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="Modal-label-4">Smart Name</h4>
+					</div>
+					<div class="modal-body">
+						<img src="images/demo/portfolio-4.jpg" alt="img01" class="img-responsive" />
+						<div class="modal-works"><span>Branding</span><span>Web Design</span></div>
+						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal for portfolio item 5 -->
+		<div class="modal fade" id="Modal-5" tabindex="-1" role="dialog" aria-labelledby="Modal-label-5">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="Modal-label-5">Fast People</h4>
+					</div>
+					<div class="modal-body">
+						<img src="images/demo/portfolio-5.jpg" alt="img01" class="img-responsive" />
+						<div class="modal-works"><span>Branding</span><span>Web Design</span></div>
+						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal for portfolio item 6 -->
+		<div class="modal fade" id="Modal-6" tabindex="-1" role="dialog" aria-labelledby="Modal-label-6">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="Modal-label-6">Kites & Stars</h4>
+					</div>
+					<div class="modal-body">
+						<img src="images/demo/portfolio-6.jpg" alt="img01" class="img-responsive" />
+						<div class="modal-works"><span>Branding</span><span>Web Design</span></div>
+						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+				
+
+		<!-- Bootstrap core JavaScript
+			================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/owl.carousel.min.js"></script>
+		<script src="js/cbpAnimatedHeader.js"></script>
+		<script src="js/jquery.appear.js"></script>
+		<script src="js/SmoothScroll.min.js"></script>
+		<script src="js/theme-scripts.js"></script>
+	</body>
 </html>
