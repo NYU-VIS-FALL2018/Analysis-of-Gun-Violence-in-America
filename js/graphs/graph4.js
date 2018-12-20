@@ -34,8 +34,8 @@ var svg = d3.select(".graph4").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 svg.call(tip);
-d3.csv("../Final_data.csv",function(error,d){
-    d3.json("../states.json",function(state){
+d3.csv("Final_data.csv",function(error,d){
+    d3.json("states.json",function(state){
         d.total_people_infected = +(d.total_people_infected);
         var values = +d.total_people_infected
         var incident = d3.nest()

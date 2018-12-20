@@ -34,7 +34,7 @@ var svg2 = d3.select(".graph5").append("svg")
 
 svg2.call(tip2);
 
-d3.csv("../Final_data.csv", function(error,d) {
+d3.csv("Final_data.csv", function(error,d) {
   c=0
   s = [0,0,0,0,0,0]
   year =[2013,2014,2015,2016,2017,2018]

@@ -34,7 +34,7 @@ var svg4 = d3.select(".graph6").append("svg")
 
 svg4.call(tip4);
 
-d3.csv("../Final_data.csv", function(error,d) {
+d3.csv("Final_data.csv", function(error,d) {
   // c=0
   s = [0,0,0,0,0,0,0]
   incident_type =['Assault','Unknown','Gang Wars','Robbery','Felon','Accident', 'Suicide']

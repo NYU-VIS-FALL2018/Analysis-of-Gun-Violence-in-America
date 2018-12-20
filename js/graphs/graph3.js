@@ -1,5 +1,5 @@
-d3.csv("../Final_data.csv", function(error,d) {
-d3.json("../states.json", function(state) {
+d3.csv("Final_data.csv", function(error,d) {
+d3.json("states.json", function(state) {
     //console.log(state[0]);
     //console.log(d[0])
     d.total_people_infected = +d.total_people_infected
