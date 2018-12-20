@@ -20,20 +20,20 @@ var yAxis = d3.svg.axis()
     
     //.tickFormat(formatPercent);
 
-var tip = d3.tip()
+var tip3 = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
     return "<strong>No of guns:</strong> <span style='color:red'>" + d.values + "</span>";
   })
 
-var svg = d3.select(".graph").append("svg")
+var svg3 = d3.select(".graph2").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-svg.call(tip);
+svg3.call(tip3);
 d3.csv("Final_data.csv",function(error,d){
     d3.json("states.json",function(state){
         d.no_of_guns_involved = +d.no_of_guns_involved
@@ -53,7 +53,7 @@ d3.csv("Final_data.csv",function(error,d){
     x.domain(states);
     y.domain([0, 18000]);
 
-    svg.append("g")
+    svg3.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis)
@@ -62,7 +62,7 @@ d3.csv("Final_data.csv",function(error,d){
         .attr("x",9)
         .attr("transform", "rotate(90)")
         .style("text-anchor", "start");
-    svg.append("g")
+    svg3.append("g")
         .attr("class", "y axis")
         .call(yAxis)
         .append("text")
@@ -72,7 +72,7 @@ d3.csv("Final_data.csv",function(error,d){
         .style("text-anchor", "end")
         .text("No of guns");
 
-    svg.selectAll(".bar")
+    svg3.selectAll(".bar")
         .data(data1)
         .enter().append("rect")
         .attr("class", "bar")
@@ -80,8 +80,8 @@ d3.csv("Final_data.csv",function(error,d){
         .attr("width", x.rangeBand())
         .attr("y", function(d) { return y(d.values); })
         .attr("height", function(d) { return height - y(d.values); })
-        .on('mouseover', tip.show)
-        .on('mouseout', tip.hide)
+        .on('mouseover', tip3.show)
+        .on('mouseout', tip3.hide)
     })
 })
 

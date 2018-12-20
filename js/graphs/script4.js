@@ -19,22 +19,22 @@ var yAxis = d3.svg.axis()
     .orient("left")
     //.tickFormat(formatPercent);
 
-var tip = d3.tip()
+var tip4 = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
     return "<strong>Number of incidents:</strong> <span style='color:red'>" + d.value + "</span>";
   })
 
-var svg = d3.select("body").append("svg")
+var svg4 = d3.select(".graph6").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-svg.call(tip);
+svg4.call(tip4);
 
-d3.csv("Final_data.csv", function(error,d) {
+d3.csv("../../Final_data.csv", function(error,d) {
   // c=0
   s = [0,0,0,0,0,0,0]
   incident_type =['Assault','Unknown','Gang Wars','Robbery','Felon','Accident', 'Suicide']
@@ -83,12 +83,12 @@ d3.csv("Final_data.csv", function(error,d) {
   x.domain(incident_type);
   y.domain([0, 150000]);
 
-  svg.append("g")
+  svg4.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
-  svg.append("g")
+  svg4.append("g")
       .attr("class", "y axis")
       .call(yAxis)
       .append("text")
@@ -98,7 +98,7 @@ d3.csv("Final_data.csv", function(error,d) {
       .style("text-anchor", "end")
       .text("No of incidents");
 
-  svg.selectAll(".bar")
+  svg4.selectAll(".bar")
     .data(data)
     .enter().append("rect")
       .attr("class", "bar")
@@ -106,8 +106,8 @@ d3.csv("Final_data.csv", function(error,d) {
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.value); })
       .attr("height", function(d) { return height - y(d.value); })
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide)
+      .on('mouseover', tip4.show)
+      .on('mouseout', tip4.hide)
 
   //console.log(typeof(data))
 }

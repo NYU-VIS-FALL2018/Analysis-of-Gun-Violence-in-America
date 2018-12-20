@@ -21,22 +21,22 @@ var yAxis = d3.svg.axis()
     
     //.tickFormat(formatPercent);
 
-var tip = d3.tip()
+var tip2 = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
     return "<strong>Count:</strong> <span style='color:red'>" + d.value + "</span>";
   })
 
-var svg = d3.select("body").append("svg")
+var svg2 = d3.select(".graph5").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-svg.call(tip);
+svg2.call(tip2);
 
-d3.csv("Final_data.csv", function(error,d) {
+d3.csv("../../Final_data.csv", function(error,d) {
   c=0
   s = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
   guntype =['Handgun', '223 Rem [AR-15]', 'Shotgun', '9mm',
@@ -75,7 +75,7 @@ var data1 = data.sort(function(a, b){
   x.domain(sort_guntype);
   y.domain([0, 18000]);
 
-  svg.append("g")
+  svg2.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
@@ -84,7 +84,7 @@ var data1 = data.sort(function(a, b){
       .attr("x",9)
       .attr("transform", "rotate(90)")
       .style("text-anchor", "start");
-  svg.append("g")
+  svg2.append("g")
       .attr("class", "y axis")
       .call(yAxis)
     .append("text")
@@ -94,7 +94,7 @@ var data1 = data.sort(function(a, b){
       .style("text-anchor", "end")
       .text("Count");
 
-  svg.selectAll(".bar")
+  svg2.selectAll(".bar")
     .data(data1)
     .enter().append("rect")
       .attr("class", "bar")
@@ -102,8 +102,8 @@ var data1 = data.sort(function(a, b){
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.value); })
       .attr("height", function(d) { return height - y(d.value); })
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide)
+      .on('mouseover', tip2.show)
+      .on('mouseout', tip2.hide)
 
   //console.log(typeof(data))
 }
