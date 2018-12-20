@@ -33,7 +33,7 @@ var svg1 = d3.select(".graph1").append("svg")
 
 svg1.call(tip1);
 
-d3.csv("../../guns.csv", function(error,d) {
+d3.csv("../guns.csv", function(error,d) {
   c=0
   s = [0,0,0,0,0,0,0,0,0,0]
   country =['United States','Yemen','Switzerland','Finland','Cyprus','Saudi Arabia','Iraq','Uruguay', 'Canada', 'Austria']

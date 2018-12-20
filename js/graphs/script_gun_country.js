@@ -34,7 +34,7 @@ var svg3 = d3.select(".graph2").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 svg3.call(tip3);
-d3.csv("Final_data.csv",function(error,d){
+d3.csv("../Final_data.csv",function(error,d){
     d3.json("states.json",function(state){
         d.no_of_guns_involved = +d.no_of_guns_involved
 
